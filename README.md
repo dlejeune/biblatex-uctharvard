@@ -2,6 +2,9 @@
 
 Preamble commands that extend the inbuilt `authoryear` style from BibLaTeX to support UCT's [flavour of Harvard referencing](http://www.lib.uct.ac.za/sites/default/files/image_tool/images/516/documents/UCT_Author_Date_referencing_2016.pdf). 
 
+## How To Use
+Just copy the contents of the single `.tex` file into the preamble of your latex doc. Make sure you're not importing `biblatex` already. Remove any code that provides unwanted functionality. Comments should be pretty clear.
+
 ## Options
 `style=authoryear-comp`: deals with papers written by the same author but in different years. Change to `authoryear` to have it repeat citations.
 
