@@ -1,0 +1,32 @@
+\usepackage[style=authoryear-comp,maxcitenames=2, maxbibnames=8, giveninits=true, mergedate=compact]{biblatex}
+
+% Colons for the page numbers
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
+\renewcommand*{\bibpagespunct}{\addcolon}
+\renewcommand{\postnotedelim}{%
+  \iffieldpages{postnote}
+    {\addcolon}}
+% -----------------------------------------
+
+% "And" vs ampsersand:
+% For the parencite command
+\let\origparencite\parencite
+\renewrobustcmd{\parencite}{%
+  \AtNextCite{%
+  \renewcommand*{\finalnamedelim}{%
+    \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+    \addspace\&\space}%
+  }%
+  \origparencite%
+}
+% For the bibliography:
+\AtBeginBibliography{%
+  \renewcommand*{\finalnamedelim}{%
+    \ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}%
+    \addspace\&\space}%
+}
+%-------------------------------------------------------------------
+
+% Comma between author and year
+\renewcommand*{\nameyeardelim}{\addcomma\space}
